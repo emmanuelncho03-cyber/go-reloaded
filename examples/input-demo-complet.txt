@@ -1,0 +1,13 @@
+Bonjour (up)
+BONJOUR (low)
+élan (cap)
+Je suis très content (up, 4)
+CE TEXTE EST BRUYANT (low, 3)
+le petit prince (cap, 2)
+42 (hex) et 1010 (bin)
+Bonjour , le monde !!
+Je réfléchis ... puis je réponds.
+Il dit : ' je suis prêt '
+There is a apple.
+Le mot zz (hex) reste inchangé.
+(up) bonjour
