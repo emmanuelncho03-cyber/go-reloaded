@@ -31,7 +31,11 @@ func Process(line string) string {
 
 func normalizeMarkers(line string) string {
 	return markerPattern.ReplaceAllStringFunc(line, func(marker string) string {
-		return " " + strings.ReplaceAll(marker, ", ", ",") + " "
+		match := markerPattern.FindStringSubmatch(marker)
+		if match[2] == "" {
+			return " (" + match[1] + ") "
+		}
+		return " (" + match[1] + "," + match[2] + ") "
 	})
 }
 
@@ -46,7 +50,12 @@ func applyMarkers(words []string) []string {
 
 		count := 1
 		if match[2] != "" {
-			count, _ = strconv.Atoi(match[2])
+			parsedCount, err := strconv.Atoi(match[2])
+			if err != nil || parsedCount > len(out) {
+				count = len(out)
+			} else {
+				count = parsedCount
+			}
 		}
 		for i := len(out) - 1; i >= 0 && count > 0; i-- {
 			if !isWord(out[i]) {
